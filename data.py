@@ -1,13 +1,17 @@
 headers = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
 }
 
 user_body = {
-    "firstName": "Andrea",
-    "phone": "+11234567890",
-    "address": "123 Elm Street, Hilltop"
+    "firstName": "Max",
+    "phone": "+10005553535",
+    "address": "8042 Lancaster Ave.Hamburg, NY"
 }
 
-product_ids = {
-    "ids": [1, 2, 3]
+kit_name = {
+    "name": "Mi conjunto"
+}
+
+token = {
+    "authToken": "jknnFApafP4awfAIFfafam2fma"
 }
