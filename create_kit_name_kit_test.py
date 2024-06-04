@@ -50,22 +50,27 @@ def test_2_create_kit_511_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC", auth_token)
 
-#Prueba 3. El número de caracteres es menor que la cantidad permitida (0)
+#Prueba 3 negativa. El número de caracteres es menor que la cantidad permitida (0)
 def test_3_create_kit_0_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     negative_assert_no_parameters("", auth_token)
 
-#Prueba 4. El número de caracteres es mayor que la cantidad permitida (512)
+#Prueba 4 negativa. El número de caracteres es mayor que la cantidad permitida (512)
 def test_4_create_kit_512_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     negative_assert_code_400("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD", auth_token)
 
-#Prueba 5. Se permiten caracteres especiales
+#Prueba 5 positiva. Se permiten caracteres especiales
 def test_5_create_kit_symbol_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("\"№%@\",",auth_token)
 
-#Prueba 6. Se permiten espacios
+#Prueba 6 positiva. Se permiten espacios
 def test_6_create_kit_spaces_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("A Aaa", auth_token)
+
+#Prueba 7 positiva. Se permiten números
+def test_7_create_kit_numbers_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    positive_assert("123", auth_token)
