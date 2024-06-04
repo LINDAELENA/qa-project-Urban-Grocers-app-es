@@ -44,3 +44,8 @@ def negative_assert_code_400(kit_name, auth_token):
 def test_1_create_kit_1_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("a", auth_token)
+
+#Prueba 2. El número permitido de caracteres (511)
+def test_2_create_kit_511_letter_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    positive_assert("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC", auth_token)
