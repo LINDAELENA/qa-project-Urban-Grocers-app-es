@@ -40,23 +40,23 @@ def negative_assert_code_400(kit_name, auth_token):
                                                   "un espacio y un guión. " \
                                                   "De 2 a 15 caracteres"  #Comprueba la respuesta en el atributo "message"
 
-#Prueba 1. El número permitido de caracteres (1)
+#Prueba 1 positiva. El número permitido de caracteres (1)
 def test_1_create_kit_1_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("a", auth_token)
 
-#Prueba 2. El número permitido de caracteres (511)
+#Prueba 2 positiva. El número permitido de caracteres (511)
 def test_2_create_kit_511_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC", auth_token)
 
 #Prueba 3 negativa. El número de caracteres es menor que la cantidad permitida (0)
-def test_3_create_kit_0_letter_in_name_get_success_response():
+def test_3_create_kit_0_letter_in_name_get_error_response():
     auth_token = get_new_user_token()
     negative_assert_no_parameters("", auth_token)
 
 #Prueba 4 negativa. El número de caracteres es mayor que la cantidad permitida (512)
-def test_4_create_kit_512_letter_in_name_get_success_response():
+def test_4_create_kit_512_letter_in_name_get_error_response():
     auth_token = get_new_user_token()
     negative_assert_code_400("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD", auth_token)
 
@@ -76,6 +76,11 @@ def test_7_create_kit_numbers_in_name_get_success_response():
     positive_assert("123", auth_token)
 
 #Prueba 8 negativa. El parámetro no se pasa en la solicitud
-def test_8_create_kit_no_parameters_in_name_get_success_response():
+def test_8_create_kit_no_parameters_in_name_get_error_response():
     auth_token = get_new_user_token()
     negative_assert_no_parameters({}, auth_token)
+
+#Prueba 9 negativa. Se ha pasado un tipo de parámetro diferente (número)
+def test_9_create_kit_different_parameters_in_name_get_error_response():
+    auth_token = get_new_user_token()
+    negative_assert_code_400( { "name": 123 }, auth_token)
