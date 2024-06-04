@@ -68,4 +68,4 @@ def test_5_create_kit_symbol_in_name_get_success_response():
 #Prueba 6. Se permiten espacios
 def test_6_create_kit_spaces_in_name_get_success_response():
     auth_token = get_new_user_token()
-    negative_assert_code_400("A Aaa", auth_token)
+    positive_assert("A Aaa", auth_token)
