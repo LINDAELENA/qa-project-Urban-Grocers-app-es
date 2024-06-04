@@ -1,7 +1,7 @@
 import sender_stand_request
 import data
 
-def get_kit_body (kit_name):  #Función para cambiar el cuerpo del contenido de la solicitud
+def get_kit_body (kit_name, auth_token):  #Función para cambiar el cuerpo del contenido de la solicitud
     headers_copy = data.headers.copy()  #Crea copia de los headers para no modificar original
     current_kit_body = data.kit_name.copy()  #Copia el diccionario con el cuerpo de la solicitud desde data
     current_kit_body["name"] = kit_name  #Cambia el valor del parámetro name
@@ -11,3 +11,11 @@ def get_new_user_token():  #Función para recibir token del nuevo usuario
     response_new_user_token = sender_stand_request.post_new_user(data.user_body)  #Guarda el resultado para crear un nuevo usuario
     user_auth_token = response_new_user_token.json().get("authToken")  #Extrae authToken del nuevo usuario
     return user_auth_token  #Devuelve authToken del nuevo usuario
+
+#Función de prueba positiva de creación de un kit, código 201
+def positive_assert(kit_name, auth_token):
+    kit_body, headers = get_kit_body(kit_name, auth_token)  #Obtiene cuerpo de la solicitud y encabezados actualizados
+    kit_body_response = sender_stand_request.post_new_client_kit(kit_body, auth_token)  #Guarda el resultado de la solicitud para crear un kit
+
+    assert kit_body_response.status_code == 201  #Comprueba si el código de estado es 201
+    assert kit_body_response.json()["name"] == kit_name  #Comprueba que el campo "name" coincida con el enviado
