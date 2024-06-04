@@ -19,3 +19,12 @@ def positive_assert(kit_name, auth_token):
 
     assert kit_body_response.status_code == 201  #Comprueba si el código de estado es 201
     assert kit_body_response.json()["name"] == kit_name  #Comprueba que el campo "name" coincida con el enviado
+
+#Función de prueba negativa, código 400 "No se han transmitido parámetros"
+def negative_assert_no_parameters(kit_name, auth_token):
+    kit_body, headers = get_kit_body(kit_name, auth_token)  #Obtiene cuerpo de la solicitud y encabezados actualizados
+    kit_body_response = sender_stand_request.post_new_client_kit(kit_body, auth_token)  #Guarda el resultado de la solicitud crear un kit
+
+    assert kit_body_response.status_code == 400  #Comprueba si el código de estado es 400
+    assert kit_body_response.json()["code"] == 400  #Comprueba que el atributo de "code" en la respuesta es 400
+    assert kit_body_response.json()["message"] == "No se han aprobado todos los parámetros requeridos"  #Comprueba la respuesta en el atributo "message"
