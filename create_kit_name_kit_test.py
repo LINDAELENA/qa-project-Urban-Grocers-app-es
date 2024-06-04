@@ -54,3 +54,9 @@ def test_2_create_kit_511_letter_in_name_get_success_response():
 def test_3_create_kit_0_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     negative_assert_no_parameters("", auth_token)
+
+#Prueba 4. El número de caracteres es mayor que la cantidad permitida (512)
+def test_4_create_kit_512_letter_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    negative_assert_code_400("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcD", auth_token)
+
