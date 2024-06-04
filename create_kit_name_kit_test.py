@@ -49,3 +49,8 @@ def test_1_create_kit_1_letter_in_name_get_success_response():
 def test_2_create_kit_511_letter_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC", auth_token)
+
+#Prueba 3. El número de caracteres es menor que la cantidad permitida (0)
+def test_3_create_kit_0_letter_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    negative_assert_no_parameters("", auth_token)
