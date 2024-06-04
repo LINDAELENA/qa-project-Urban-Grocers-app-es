@@ -74,3 +74,8 @@ def test_6_create_kit_spaces_in_name_get_success_response():
 def test_7_create_kit_numbers_in_name_get_success_response():
     auth_token = get_new_user_token()
     positive_assert("123", auth_token)
+
+#Prueba 8 negativa. El parámetro no se pasa en la solicitud
+def test_8_create_kit_no_parameters_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    negative_assert_no_parameters({}, auth_token)
