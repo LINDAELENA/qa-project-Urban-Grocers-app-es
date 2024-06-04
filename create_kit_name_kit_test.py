@@ -39,3 +39,8 @@ def negative_assert_code_400(kit_name, auth_token):
     assert kit_body_response.json()["message"] == "El nombre debe contener sólo letras latino, "\
                                                   "un espacio y un guión. " \
                                                   "De 2 a 15 caracteres"  #Comprueba la respuesta en el atributo "message"
+
+#Prueba 1. El número permitido de caracteres (1)
+def test_1_create_kit_1_letter_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    positive_assert("a", auth_token)
