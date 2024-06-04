@@ -63,4 +63,9 @@ def test_4_create_kit_512_letter_in_name_get_success_response():
 #Prueba 5. Se permiten caracteres especiales
 def test_5_create_kit_symbol_in_name_get_success_response():
     auth_token = get_new_user_token()
-    negative_assert_code_400("\"№%@\",",auth_token)
+    positive_assert("\"№%@\",",auth_token)
+
+#Prueba 6. Se permiten espacios
+def test_6_create_kit_spaces_in_name_get_success_response():
+    auth_token = get_new_user_token()
+    negative_assert_code_400("A Aaa", auth_token)
